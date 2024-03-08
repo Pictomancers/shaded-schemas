@@ -1,0 +1,130 @@
+{
+    "$schema": "https://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "required": [
+        "ManifestVersion",
+        "ReShadeVersion",
+        "Name",
+        "Description",
+        "Authors",
+        "LicenseFile"
+    ],
+    "properties": {
+        "ManifestVersion": {
+            "$comment": "This field is only updated when a breaking change to the manifest is made.",
+            "type": "integer",
+            "description": "The major manifest version of this collection. Reflects compatibility with other tools.",
+            "default": 1,
+            "minimum": 1,
+            "maximum": 1
+        },
+        "ReShadeVersion": {
+            "type": "integer",
+            "description": "The major ReShade version that this shaderpack is built for.",
+            "default": 6,
+            "minimum": 5
+        },
+        "Name": {
+            "type": "string",
+            "$ref": "#/$defs/NoSurroundingWhitespace",
+            "description": "The Name of the collection."
+        },
+        "Description": {
+            "type": "string",
+            "$ref": "#/$defs/NoSurroundingWhitespace",
+            "description": "A short description describing this collection."
+        },
+        "Authors": {
+            "type": "array",
+            "$ref": "#/$defs/NoSurroundingWhitespace",
+            "description": "The names of the authors that made the collection."
+        },
+        "LicenseFile": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "$ref": "#/$defs/NoSurroundingWhitespace",
+            "description": "The path to the license that applies to this collection."
+        },
+        "Images": {
+            "type": [
+                "array",
+                "null"
+            ],
+            "uniqueItems": true,
+            "items": {
+                "pattern": "(https:)([/|.|\\w|\\s|-])*\\.(?:jpg|png)"
+            },
+            "description": "A collection of images that show off this collection in action. Must be a https URL ending with .png or a .jpg."
+        },
+        "Shaders": {
+            "type": [
+                "array",
+                "null"
+            ],
+            "description": "A declaration of every unique shader file included in this collection.",
+            "uniqueItems": true,
+            "items": {
+                "$ref": "#/$defs/FileDeclaration"
+            }
+        },
+        "Textures": {
+            "type": [
+                "array",
+                "null"
+            ],
+            "description": "A declaration of every unique texture file included in this collection.",
+            "uniqueItems": true,
+            "items": {
+                "$ref": "#/$defs/FileDeclaration"
+            }
+        },
+        "Presets": {
+            "type": [
+                "array",
+                "null"
+            ],
+            "description": "A declaration of every unique preset file included in this collection.",
+            "uniqueItems": true,
+            "items": {
+                "$ref": "#/$defs/FileDeclaration"
+            }
+        },
+        "Addons": {
+            "type": [
+                "array",
+                "null"
+            ],
+            "description": "A  declaration of every unqiue addon file included in this collection.",
+            "uniqueItems": true,
+            "items": {
+                "$ref": "#/$defs/FileDeclaration"
+            }
+        }
+    },
+    "$defs": {
+        "FileDeclaration": {
+            "type": "object",
+            "required": [
+                "Source",
+                "Output"
+            ],
+            "properties": {
+                "Source": {
+                    "type": "string",
+                    "$ref": "#/$defs/NoSurroundingWhitespace",
+                    "description": "A source file name or path relative to the location of this manifest. Cannot start or end with a space."
+                },
+                "Output": {
+                    "type": "string",
+                    "$ref": "#/$defs/NoSurroundingWhitespace",
+                    "description": "An output file name or path that will be appended after the relevant base output directory. Cannot start or end with a space."
+                }
+            }
+        },
+        "NoSurroundingWhitespace": {
+            "pattern": "^[^\\s]+(\\s+[^\\s]+)*$"
+        }
+    }
+}
