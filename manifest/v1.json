@@ -13,31 +13,31 @@
         "ManifestVersion": {
             "$comment": "This field is only updated when a breaking change to the manifest is made.",
             "type": "integer",
-            "description": "The major manifest version of this collection. Reflects compatibility with other tools.",
+            "description": "The major manifest version of this shader pack. Reflects compatibility with other tools.",
             "default": 1,
             "minimum": 1,
             "maximum": 1
         },
         "ReShadeVersion": {
             "type": "integer",
-            "description": "The major ReShade version that this shaderpack is built for.",
+            "description": "The major ReShade version that this shader pack is built for.",
             "default": 6,
             "minimum": 5
         },
         "Name": {
             "type": "string",
             "$ref": "#/$defs/NoSurroundingWhitespace",
-            "description": "The Name of the collection."
+            "description": "The Name of the shader pack."
         },
         "Description": {
             "type": "string",
             "$ref": "#/$defs/NoSurroundingWhitespace",
-            "description": "A short description describing this collection."
+            "description": "A short description describing this shader pack."
         },
         "Authors": {
             "type": "array",
             "$ref": "#/$defs/NoSurroundingWhitespace",
-            "description": "The names of the authors that made the collection."
+            "description": "The names of the authors that made the shader pack."
         },
         "LicenseFile": {
             "type": [
@@ -45,7 +45,17 @@
                 "null"
             ],
             "$ref": "#/$defs/NoSurroundingWhitespace",
-            "description": "The path to the license that applies to this collection."
+            "description": "The path to the license that applies to this shader pack."
+        },
+        "WebsiteURL": {
+            "type": "string",
+            "pattern": "^(https://)\\S*",
+            "description": "A URL to the website of this shader pack. This could be a git repository or landing page."
+        },
+        "DonationURL": {
+            "type": "string",
+            "pattern": "^(https://)\\S*",
+            "description": "A URL to a website where someone can donate to this shader pack."
         },
         "Images": {
             "type": [
@@ -56,14 +66,14 @@
             "items": {
                 "pattern": "(https:)([/|.|\\w|\\s|-])*\\.(?:jpg|png)"
             },
-            "description": "A collection of images that show off this collection in action. Must be a https URL ending with .png or a .jpg."
+            "description": "A collection of images that show off this shader pack in action. Must be a https URL ending with .png or a .jpg."
         },
         "Shaders": {
             "type": [
                 "array",
                 "null"
             ],
-            "description": "A declaration of every unique shader file included in this collection.",
+            "description": "A declaration of every unique shader file included in this shader pack.",
             "uniqueItems": true,
             "items": {
                 "$ref": "#/$defs/FileDeclaration"
@@ -74,7 +84,7 @@
                 "array",
                 "null"
             ],
-            "description": "A declaration of every unique texture file included in this collection.",
+            "description": "A declaration of every unique texture file included in this shader pack.",
             "uniqueItems": true,
             "items": {
                 "$ref": "#/$defs/FileDeclaration"
@@ -85,7 +95,7 @@
                 "array",
                 "null"
             ],
-            "description": "A declaration of every unique preset file included in this collection.",
+            "description": "A declaration of every unique preset file included in this shader pack.",
             "uniqueItems": true,
             "items": {
                 "$ref": "#/$defs/FileDeclaration"
@@ -96,7 +106,7 @@
                 "array",
                 "null"
             ],
-            "description": "A  declaration of every unqiue addon file included in this collection.",
+            "description": "A  declaration of every unqiue addon file included in this shader pack.",
             "uniqueItems": true,
             "items": {
                 "$ref": "#/$defs/FileDeclaration"
@@ -122,6 +132,9 @@
                     "description": "An output file name or path that will be appended after the relevant base output directory. Cannot start or end with a space."
                 }
             }
+        },
+        "HttpsURL": {
+            "pattern": "^(https://)\\S*"
         },
         "NoSurroundingWhitespace": {
             "pattern": "^[^\\s]+(\\s+[^\\s]+)*$"
