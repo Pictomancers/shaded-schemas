@@ -6,10 +6,10 @@
         "Shaders"
     ],
     "properties": {
-        "CollectionVersion": {
+        "ManifestVersion": {
             "$comment": "This field is only updated when a breaking changes to the manifest format are made and will be done with schema updates.",
             "type": "integer",
-            "description": "The major collection version of this collection. Used for identifying compatibility with other tools.",
+            "description": "The version number of this manifest. **This is not the collection version**, it is used for identifying compatibility with other tools.",
             "default": 1,
             "minimum": 1,
             "maximum": 1
