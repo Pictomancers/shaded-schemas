@@ -3,7 +3,7 @@
     "type": "object",
     "required": [
         "ManifestVersion",
-        "ReshadeVersion",
+        "ReShadeVersion",
         "Name",
         "ShaderPacks"
     ],
@@ -16,9 +16,9 @@
             "minimum": 1,
             "maximum": 1
         },
-        "ReshadeVersion": {
+        "ReShadeVersion": {
             "type": "integer",
-            "description": "The major Reshade version that this collection is built for.",
+            "description": "The major ReShade version that this collection is built for.",
             "default": 6,
             "minimum": 1
         },
