@@ -3,7 +3,9 @@
     "type": "object",
     "required": [
         "ManifestVersion",
-        "Shaders"
+        "ReshadeVersion",
+        "Name",
+        "ShaderPacks"
     ],
     "properties": {
         "ManifestVersion": {
@@ -14,15 +16,34 @@
             "minimum": 1,
             "maximum": 1
         },
-        "Shaders": {
+        "ReshadeVersion": {
+            "type": "integer",
+            "description": "The major Reshade version that this collection is built for.",
+            "default": 6,
+            "minimum": 1
+        },
+        "Name": {
+            "type": "string",
+            "$ref": "#/$defs/NoSurroundingWhitespace",
+            "description": "The name of this collection."
+        },
+        "Description": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "$ref": "#/$defs/NoSurroundingWhitespace",
+            "description": "A short description describing this collection."
+        },
+        "ShaderPacks": {
             "type": "array",
             "items": {
-                "$ref": "#/$defs/ShaderItem"
+                "$ref": "#/$defs/ShaderPack"
             }
         }
     },
     "$defs": {
-        "ShaderItem": {
+        "ShaderPack": {
             "type": "object",
             "required": [
                 "Name",
@@ -36,32 +57,32 @@
             "properties": {
                 "Name": {
                     "type": "string",
-                    "description": "The name of the collection."
+                    "description": "The name of the shaderpack."
                 },
                 "Description": {
                     "type": "string",
-                    "description": "A short description describing this collection."
+                    "description": "A short description describing this shaderpack."
                 },
                 "Authors": {
                     "type": "array",
-                    "description": "A short description describing this collection."
+                    "description": "A short description describing this shaderpack."
                 },
                 "Images": {
                     "type": [
                         "array",
                         "null"
                     ],
-                    "description": "A collection of images that show off this collection in action. Must be a https URL ending with .png or a .jpg."
+                    "description": "A shaderpack of images that show off this shaderpack in action. Must be a https URL ending with .png or a .jpg."
                 },
                 "WebsiteURL": {
                     "type": "string",
                     "pattern": "^(https://)\\S*",
-                    "description": "A URL to the website of this collection. This could be a git repository or landing page."
+                    "description": "A URL to the website of this shaderpack. This could be a git repository or landing page."
                 },
                 "DonationURL": {
                     "type": "string",
                     "pattern": "^(https://)\\S*",
-                    "description": "A URL to a website where someone can donate to this collection."
+                    "description": "A URL to a website where someone can donate to this shaderpack."
                 },
                 "ShaderCount": {
                     "type": "number",
@@ -69,15 +90,15 @@
                 },
                 "TextureCount": {
                     "type": "number",
-                    "description": "The amount of textures included in this collection."
+                    "description": "The amount of textures included in this shaderpack."
                 },
                 "PresetCount": {
                     "type": "number",
-                    "description": "The amount of presets included in this collection."
+                    "description": "The amount of presets included in this shaderpack."
                 },
                 "AddonCount": {
                     "type": "number",
-                    "description": "The amount of addons included in this collection."
+                    "description": "The amount of addons included in this shaderpack."
                 }
             }
         }
