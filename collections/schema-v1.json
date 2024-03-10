@@ -36,32 +36,32 @@
             "properties": {
                 "Name": {
                     "type": "string",
-                    "description": "The name of the shaderpack."
+                    "description": "The name of the collection."
                 },
                 "Description": {
                     "type": "string",
-                    "description": "A short description describing this shaderpack."
+                    "description": "A short description describing this collection."
                 },
                 "Authors": {
                     "type": "array",
-                    "description": "A short description describing this shaderpack."
+                    "description": "A short description describing this collection."
                 },
                 "Images": {
                     "type": [
                         "array",
                         "null"
                     ],
-                    "description": "A collection of images that show off this shaderpack in action. Must be a https URL ending with .png or a .jpg."
+                    "description": "A collection of images that show off this collection in action. Must be a https URL ending with .png or a .jpg."
                 },
                 "WebsiteURL": {
                     "type": "string",
                     "pattern": "^(https://)\\S*",
-                    "description": "A URL to the website of this shaderpack. This could be a git repository or landing page."
+                    "description": "A URL to the website of this collection. This could be a git repository or landing page."
                 },
                 "DonationURL": {
                     "type": "string",
                     "pattern": "^(https://)\\S*",
-                    "description": "A URL to a website where someone can donate to this shaderpack."
+                    "description": "A URL to a website where someone can donate to this collection."
                 },
                 "ShaderCount": {
                     "type": "number",
@@ -69,15 +69,15 @@
                 },
                 "TextureCount": {
                     "type": "number",
-                    "description": "The amount of textures included in this shaderpack."
+                    "description": "The amount of textures included in this collection."
                 },
                 "PresetCount": {
                     "type": "number",
-                    "description": "The amount of presets included in this shaderpack."
+                    "description": "The amount of presets included in this collection."
                 },
                 "AddonCount": {
                     "type": "number",
-                    "description": "The amount of addons included in this shaderpack."
+                    "description": "The amount of addons included in this collection."
                 }
             }
         }
