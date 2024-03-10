@@ -1,0 +1,91 @@
+{
+    "$schema": "https://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "required": [
+        "ManifestVersion",
+        "Shaders"
+    ],
+    "properties": {
+        "CollectionVersion": {
+            "$comment": "This field is only updated when a breaking changes to the manifest format are made and will be done with schema updates.",
+            "type": "integer",
+            "description": "The major collection version of this collection. Used for identifying compatibility with other tools.",
+            "default": 1,
+            "minimum": 1,
+            "maximum": 1
+        },
+        "Shaders": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/ShaderItem"
+            }
+        }
+    },
+    "$defs": {
+        "ShaderItem": {
+            "type": "object",
+            "required": [
+                "Name",
+                "Description",
+                "Authors",
+                "ShaderCount",
+                "TextureCount",
+                "PresetCount",
+                "AddonCount"
+            ],
+            "properties": {
+                "Name": {
+                    "type": "string",
+                    "description": "The name of the shaderpack."
+                },
+                "Description": {
+                    "type": "string",
+                    "description": "A short description describing this shaderpack."
+                },
+                "Authors": {
+                    "type": "array",
+                    "description": "A short description describing this shaderpack."
+                },
+                "Images": {
+                    "type": [
+                        "array",
+                        "null"
+                    ],
+                    "description": "A collection of images that show off this shaderpack in action. Must be a https URL ending with .png or a .jpg."
+                },
+                "WebsiteURL": {
+                    "type": "string",
+                    "pattern": "^(https://)\\S*",
+                    "description": "A URL to the website of this shaderpack. This could be a git repository or landing page."
+                },
+                "DonationURL": {
+                    "type": "string",
+                    "pattern": "^(https://)\\S*",
+                    "description": "A URL to a website where someone can donate to this shaderpack."
+                },
+                "ShaderCount": {
+                    "type": "number",
+                    "description": "The amount of shaders include in this pack."
+                },
+                "TextureCount": {
+                    "type": "number",
+                    "description": "The amount of textures included in this shaderpack."
+                },
+                "PresetCount": {
+                    "type": "number",
+                    "description": "The amount of presets included in this shaderpack."
+                },
+                "AddonCount": {
+                    "type": "number",
+                    "description": "The amount of addons included in this shaderpack."
+                }
+            }
+        }
+    },
+    "HttpsURL": {
+        "pattern": "^(https://)\\S*"
+    },
+    "NoSurroundingWhitespace": {
+        "pattern": "^[^\\s]+(\\s+[^\\s]+)*$"
+    }
+}
