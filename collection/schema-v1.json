@@ -33,7 +33,7 @@
                 "null"
             ],
             "$ref": "#/$defs/NoSurroundingWhitespace",
-            "description": "A short description describing this collection."
+            "description": "A short description for this collection."
         },
         "ShaderPacks": {
             "type": "array",
